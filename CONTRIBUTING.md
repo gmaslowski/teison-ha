@@ -20,6 +20,20 @@ pre-commit install
 - New entities need a `translation_key` and matching entries in `strings.json`
   (mirror the change into `translations/en.json`).
 
+## Releasing
+
+Releases are cut from GitHub Releases and packaged automatically:
+
+1. Draft a new release at **Releases → Draft a new release**.
+2. Create a tag of the form `vX.Y.Z` (the first release is **`v0.0.6`**).
+3. Publish it.
+
+The [`Release`](.github/workflows/release.yml) workflow then stamps that version
+into `manifest.json`, zips `custom_components/teison` into `teison.zip`, and
+attaches it to the release. HACS installs from that ZIP (`zip_release` in
+`hacs.json`), so the committed `manifest.json` version is only a placeholder —
+the published version always matches the tag.
+
 ## Protocol notes
 
 The vendor cloud is undocumented and occasionally changes. When adding an

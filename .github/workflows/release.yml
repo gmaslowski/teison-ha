@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Package and attach ZIP
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Derive version from tag
+        id: version
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          echo "Releasing version ${version}"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+
+      - name: Stamp manifest version to match the tag
+        run: |
+          python - "${{ steps.version.outputs.version }}" <<'PY'
+          import json, pathlib, sys
+
+          version = sys.argv[1]
+          path = pathlib.Path("custom_components/teison/manifest.json")
+          data = json.loads(path.read_text())
+          data["version"] = version
+          path.write_text(json.dumps(data, indent=2) + "\n")
+          print(f"manifest.json version set to {version}")
+          PY
+
+      - name: Build teison.zip
+        run: |
+          cd custom_components/teison
+          zip -r "${GITHUB_WORKSPACE}/teison.zip" .
+
+      - name: Attach ZIP to the release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: teison.zip
