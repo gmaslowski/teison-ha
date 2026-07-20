@@ -23,5 +23,7 @@ jobs:
       - uses: hacs/action@main
         with:
           category: integration
-          # Drop once teison is added to home-assistant/brands (logo/icon PR).
+          # The brand icon is bundled locally under custom_components/teison/brand/
+          # (HA 2026.3+ Brands Proxy API). home-assistant/brands no longer accepts
+          # custom-integration PRs, so this HACS check can't be satisfied there.
           ignore: brands
