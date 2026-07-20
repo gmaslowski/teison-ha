@@ -1,0 +1,83 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Se connecter à Teison",
+        "description": "Connectez-vous avec les identifiants de votre application Teison.",
+        "data": {
+          "app": "Application / cloud Teison",
+          "username": "Nom d'utilisateur",
+          "password": "Mot de passe"
+        }
+      },
+      "device": {
+        "title": "Sélectionner la borne de recharge",
+        "description": "Choisissez la borne de recharge à ajouter à Home Assistant.",
+        "data": {
+          "device_id": "Borne de recharge"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Ré-authentifier Teison",
+        "description": "Le mot de passe pour {username} n'est plus valide. Saisissez-le à nouveau.",
+        "data": {
+          "password": "Mot de passe"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Échec de la connexion au cloud Teison.",
+      "invalid_auth": "Nom d'utilisateur ou mot de passe invalide.",
+      "no_devices": "Aucune borne de recharge trouvée sur ce compte.",
+      "unknown": "Une erreur inattendue s'est produite."
+    },
+    "abort": {
+      "already_configured": "Cette borne de recharge est déjà configurée.",
+      "reauth_successful": "La ré-authentification a réussi."
+    }
+  },
+  "selector": {
+    "app": {
+      "options": {
+        "myteison": "My Teison (cloud.teison.com)",
+        "teisonme": "Teison Me (teison-m3.x-cheng.com)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Statut",
+        "state": {
+          "available": "Disponible",
+          "preparing": "Préparation",
+          "charging": "En charge",
+          "suspended_evse": "En pause (borne)",
+          "suspended_ev": "En pause (véhicule)",
+          "finished": "Terminé",
+          "reserved": "Réservé",
+          "unavailable": "Indisponible",
+          "faulted": "En défaut"
+        }
+      },
+      "power": { "name": "Puissance" },
+      "energy": { "name": "Énergie de la session" },
+      "total_energy": { "name": "Énergie totale" },
+      "temperature": { "name": "Température" },
+      "duration": { "name": "Durée de la session" },
+      "voltage_l1": { "name": "Tension L1" },
+      "voltage_l2": { "name": "Tension L2" },
+      "voltage_l3": { "name": "Tension L3" },
+      "current_l1": { "name": "Courant L1" },
+      "current_l2": { "name": "Courant L2" },
+      "current_l3": { "name": "Courant L3" }
+    },
+    "number": {
+      "max_current": { "name": "Courant de charge max." },
+      "household_current": { "name": "Limite de courant domestique" }
+    },
+    "switch": {
+      "charging": { "name": "Charge" }
+    }
+  }
+}

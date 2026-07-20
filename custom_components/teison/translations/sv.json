@@ -1,0 +1,83 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Anslut till Teison",
+        "description": "Logga in med uppgifterna från din Teison-app.",
+        "data": {
+          "app": "Teison-app / moln",
+          "username": "Användarnamn",
+          "password": "Lösenord"
+        }
+      },
+      "device": {
+        "title": "Välj laddare",
+        "description": "Välj laddaren som ska läggas till i Home Assistant.",
+        "data": {
+          "device_id": "Laddare"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Autentisera Teison igen",
+        "description": "Lösenordet för {username} är inte längre giltigt. Ange det igen.",
+        "data": {
+          "password": "Lösenord"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Det gick inte att ansluta till Teison-molnet.",
+      "invalid_auth": "Ogiltigt användarnamn eller lösenord.",
+      "no_devices": "Inga laddare hittades på det här kontot.",
+      "unknown": "Ett oväntat fel inträffade."
+    },
+    "abort": {
+      "already_configured": "Den här laddaren är redan konfigurerad.",
+      "reauth_successful": "Återautentiseringen lyckades."
+    }
+  },
+  "selector": {
+    "app": {
+      "options": {
+        "myteison": "My Teison (cloud.teison.com)",
+        "teisonme": "Teison Me (teison-m3.x-cheng.com)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status",
+        "state": {
+          "available": "Tillgänglig",
+          "preparing": "Förbereder",
+          "charging": "Laddar",
+          "suspended_evse": "Pausad (laddare)",
+          "suspended_ev": "Pausad (fordon)",
+          "finished": "Slutförd",
+          "reserved": "Reserverad",
+          "unavailable": "Otillgänglig",
+          "faulted": "Fel"
+        }
+      },
+      "power": { "name": "Effekt" },
+      "energy": { "name": "Sessionsenergi" },
+      "total_energy": { "name": "Total energi" },
+      "temperature": { "name": "Temperatur" },
+      "duration": { "name": "Sessionslängd" },
+      "voltage_l1": { "name": "Spänning L1" },
+      "voltage_l2": { "name": "Spänning L2" },
+      "voltage_l3": { "name": "Spänning L3" },
+      "current_l1": { "name": "Ström L1" },
+      "current_l2": { "name": "Ström L2" },
+      "current_l3": { "name": "Ström L3" }
+    },
+    "number": {
+      "max_current": { "name": "Max. laddström" },
+      "household_current": { "name": "Gräns för hushållsström" }
+    },
+    "switch": {
+      "charging": { "name": "Laddar" }
+    }
+  }
+}

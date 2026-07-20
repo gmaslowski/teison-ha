@@ -1,0 +1,83 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Koble til Teison",
+        "description": "Logg inn med påloggingsinformasjonen fra Teison-appen.",
+        "data": {
+          "app": "Teison-app / sky",
+          "username": "Brukernavn",
+          "password": "Passord"
+        }
+      },
+      "device": {
+        "title": "Velg lader",
+        "description": "Velg laderen som skal legges til i Home Assistant.",
+        "data": {
+          "device_id": "Lader"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Autentiser Teison på nytt",
+        "description": "Passordet for {username} er ikke lenger gyldig. Skriv det inn på nytt.",
+        "data": {
+          "password": "Passord"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kunne ikke koble til Teison-skyen.",
+      "invalid_auth": "Ugyldig brukernavn eller passord.",
+      "no_devices": "Ingen ladere ble funnet på denne kontoen.",
+      "unknown": "Det oppstod en uventet feil."
+    },
+    "abort": {
+      "already_configured": "Denne laderen er allerede konfigurert.",
+      "reauth_successful": "Ny autentisering var vellykket."
+    }
+  },
+  "selector": {
+    "app": {
+      "options": {
+        "myteison": "My Teison (cloud.teison.com)",
+        "teisonme": "Teison Me (teison-m3.x-cheng.com)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status",
+        "state": {
+          "available": "Tilgjengelig",
+          "preparing": "Forbereder",
+          "charging": "Lader",
+          "suspended_evse": "Pauset (lader)",
+          "suspended_ev": "Pauset (kjøretøy)",
+          "finished": "Fullført",
+          "reserved": "Reservert",
+          "unavailable": "Utilgjengelig",
+          "faulted": "Feil"
+        }
+      },
+      "power": { "name": "Effekt" },
+      "energy": { "name": "Øktenergi" },
+      "total_energy": { "name": "Total energi" },
+      "temperature": { "name": "Temperatur" },
+      "duration": { "name": "Øktvarighet" },
+      "voltage_l1": { "name": "Spenning L1" },
+      "voltage_l2": { "name": "Spenning L2" },
+      "voltage_l3": { "name": "Spenning L3" },
+      "current_l1": { "name": "Strøm L1" },
+      "current_l2": { "name": "Strøm L2" },
+      "current_l3": { "name": "Strøm L3" }
+    },
+    "number": {
+      "max_current": { "name": "Maks. ladestrøm" },
+      "household_current": { "name": "Grense for husholdningsstrøm" }
+    },
+    "switch": {
+      "charging": { "name": "Lading" }
+    }
+  }
+}
