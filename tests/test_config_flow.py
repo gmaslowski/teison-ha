@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import timedelta
 from unittest.mock import AsyncMock
 
 from homeassistant.config_entries import SOURCE_USER
@@ -14,9 +15,11 @@ from custom_components.teison.const import (
     APP_MYTEISON,
     CONF_APP,
     CONF_DEVICE_ID,
+    CONF_SCAN_INTERVAL,
     DOMAIN,
 )
 
+from .conftest import setup_integration
 from .const import MOCK_DEVICE
 
 USER_INPUT = {
@@ -104,6 +107,28 @@ async def test_no_devices(hass: HomeAssistant, mock_client) -> None:
         result["flow_id"], USER_INPUT
     )
     assert result["errors"] == {"base": "no_devices"}
+
+
+async def test_options_flow_changes_scan_interval(
+    hass: HomeAssistant, mock_config_entry, mock_client
+) -> None:
+    """Setting the scan interval updates options and reloads the coordinator."""
+    entry = await setup_integration(hass, mock_config_entry)
+    assert entry.runtime_data.update_interval == timedelta(seconds=30)
+
+    result = await hass.config_entries.options.async_init(entry.entry_id)
+    assert result["type"] is FlowResultType.FORM
+    assert result["step_id"] == "init"
+
+    result = await hass.config_entries.options.async_configure(
+        result["flow_id"], {CONF_SCAN_INTERVAL: 60}
+    )
+    await hass.async_block_till_done()
+
+    assert result["type"] is FlowResultType.CREATE_ENTRY
+    assert entry.options[CONF_SCAN_INTERVAL] == 60
+    # The reload rebuilds the coordinator with the new interval.
+    assert entry.runtime_data.update_interval == timedelta(seconds=60)
 
 
 async def test_duplicate_aborts(hass: HomeAssistant, mock_client) -> None:

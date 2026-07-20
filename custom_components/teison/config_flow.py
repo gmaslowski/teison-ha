@@ -5,10 +5,19 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
+from homeassistant.config_entries import (
+    ConfigEntry,
+    ConfigFlow,
+    ConfigFlowResult,
+    OptionsFlow,
+)
 from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
+from homeassistant.core import callback
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.selector import (
+    NumberSelector,
+    NumberSelectorConfig,
+    NumberSelectorMode,
     SelectSelector,
     SelectSelectorConfig,
     SelectSelectorMode,
@@ -26,8 +35,12 @@ from .const import (
     APP_TEISONME,
     CONF_APP,
     CONF_DEVICE_ID,
+    CONF_SCAN_INTERVAL,
     DATA_DEVICE_INFO,
+    DEFAULT_SCAN_INTERVAL_SECONDS,
     DOMAIN,
+    MAX_SCAN_INTERVAL,
+    MIN_SCAN_INTERVAL,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -62,6 +75,12 @@ class TeisonConfigFlow(ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Teison EV Charger."""
 
     VERSION = 1
+
+    @staticmethod
+    @callback
+    def async_get_options_flow(config_entry: ConfigEntry) -> TeisonOptionsFlow:
+        """Return the options flow handler."""
+        return TeisonOptionsFlow()
 
     def __init__(self) -> None:
         """Initialise transient flow state."""
@@ -182,3 +201,34 @@ class TeisonConfigFlow(ConfigFlow, domain=DOMAIN):
             description_placeholders={CONF_USERNAME: entry.data[CONF_USERNAME]},
             errors=errors,
         )
+
+
+class TeisonOptionsFlow(OptionsFlow):
+    """Handle the Teison options: currently just the polling interval."""
+
+    async def async_step_init(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
+        """Manage the polling interval."""
+        if user_input is not None:
+            return self.async_create_entry(
+                data={CONF_SCAN_INTERVAL: int(user_input[CONF_SCAN_INTERVAL])}
+            )
+
+        current = self.config_entry.options.get(
+            CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL_SECONDS
+        )
+        schema = vol.Schema(
+            {
+                vol.Required(CONF_SCAN_INTERVAL, default=current): NumberSelector(
+                    NumberSelectorConfig(
+                        min=MIN_SCAN_INTERVAL,
+                        max=MAX_SCAN_INTERVAL,
+                        step=1,
+                        mode=NumberSelectorMode.BOX,
+                        unit_of_measurement="s",
+                    )
+                ),
+            }
+        )
+        return self.async_show_form(step_id="init", data_schema=schema)
