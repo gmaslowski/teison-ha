@@ -1,6 +1,4 @@
 # Pinned against a Home Assistant release line; bump alongside `hacs.json`.
-homeassistant==2024.11.0
-pytest-homeassistant-custom-component==0.13.181
+homeassistant==2025.3.4
+pytest-homeassistant-custom-component==0.13.225
 ruff==0.7.4
-# acme 2.11.0 (via hass-nabucasa) needs josepy's ComparableX509, dropped in josepy 2.0.
-josepy==1.14.0

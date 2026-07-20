@@ -24,7 +24,7 @@ multi-charger accounts, and **diagnostics** download.
 
 ## Requirements
 
-- Home Assistant 2024.11 or newer.
+- Home Assistant 2025.3 or newer.
 - A Teison account with your charger paired in the *My Teison* or *Teison Me*
   mobile app (use the same username/password here).
 
