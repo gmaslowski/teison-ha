@@ -36,6 +36,17 @@
       "reauth_successful": "Re-authentication was successful."
     }
   },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Teison options",
+        "description": "Adjust how often Home Assistant polls the charger.",
+        "data": {
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    }
+  },
   "selector": {
     "app": {
       "options": {

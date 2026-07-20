@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import timedelta
 import logging
 from typing import Any
 
@@ -17,7 +18,11 @@ from .api import (
     TeisonConnectionError,
     TeisonError,
 )
-from .const import DEFAULT_SCAN_INTERVAL, DOMAIN
+from .const import (
+    CONF_SCAN_INTERVAL,
+    DEFAULT_SCAN_INTERVAL_SECONDS,
+    DOMAIN,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -46,12 +51,13 @@ class TeisonCoordinator(DataUpdateCoordinator[TeisonData]):
         device_id: int | str,
     ) -> None:
         """Initialise the coordinator."""
+        interval = entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL_SECONDS)
         super().__init__(
             hass,
             _LOGGER,
             config_entry=entry,
             name=DOMAIN,
-            update_interval=DEFAULT_SCAN_INTERVAL,
+            update_interval=timedelta(seconds=int(interval)),
         )
         self.client = client
         self.device_id = device_id
