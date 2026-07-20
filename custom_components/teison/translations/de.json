@@ -1,0 +1,83 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mit Teison verbinden",
+        "description": "Melde dich mit den Zugangsdaten aus deiner Teison-App an.",
+        "data": {
+          "app": "Teison-App / Cloud",
+          "username": "Benutzername",
+          "password": "Passwort"
+        }
+      },
+      "device": {
+        "title": "Ladegerät auswählen",
+        "description": "Wähle das Ladegerät, das zu Home Assistant hinzugefügt werden soll.",
+        "data": {
+          "device_id": "Ladegerät"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Teison erneut authentifizieren",
+        "description": "Das Passwort für {username} ist nicht mehr gültig. Bitte erneut eingeben.",
+        "data": {
+          "password": "Passwort"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zur Teison-Cloud fehlgeschlagen.",
+      "invalid_auth": "Ungültiger Benutzername oder Passwort.",
+      "no_devices": "Für dieses Konto wurden keine Ladegeräte gefunden.",
+      "unknown": "Ein unerwarteter Fehler ist aufgetreten."
+    },
+    "abort": {
+      "already_configured": "Dieses Ladegerät ist bereits konfiguriert.",
+      "reauth_successful": "Die erneute Authentifizierung war erfolgreich."
+    }
+  },
+  "selector": {
+    "app": {
+      "options": {
+        "myteison": "My Teison (cloud.teison.com)",
+        "teisonme": "Teison Me (teison-m3.x-cheng.com)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status",
+        "state": {
+          "available": "Verfügbar",
+          "preparing": "Vorbereitung",
+          "charging": "Lädt",
+          "suspended_evse": "Angehalten (Ladegerät)",
+          "suspended_ev": "Angehalten (Fahrzeug)",
+          "finished": "Abgeschlossen",
+          "reserved": "Reserviert",
+          "unavailable": "Nicht verfügbar",
+          "faulted": "Fehler"
+        }
+      },
+      "power": { "name": "Leistung" },
+      "energy": { "name": "Sitzungsenergie" },
+      "total_energy": { "name": "Gesamtenergie" },
+      "temperature": { "name": "Temperatur" },
+      "duration": { "name": "Sitzungsdauer" },
+      "voltage_l1": { "name": "Spannung L1" },
+      "voltage_l2": { "name": "Spannung L2" },
+      "voltage_l3": { "name": "Spannung L3" },
+      "current_l1": { "name": "Strom L1" },
+      "current_l2": { "name": "Strom L2" },
+      "current_l3": { "name": "Strom L3" }
+    },
+    "number": {
+      "max_current": { "name": "Max. Ladestrom" },
+      "household_current": { "name": "Haushaltsstromgrenze" }
+    },
+    "switch": {
+      "charging": { "name": "Laden" }
+    }
+  }
+}

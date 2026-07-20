@@ -1,0 +1,83 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Verbinden met Teison",
+        "description": "Log in met de gegevens van je Teison-app.",
+        "data": {
+          "app": "Teison-app / cloud",
+          "username": "Gebruikersnaam",
+          "password": "Wachtwoord"
+        }
+      },
+      "device": {
+        "title": "Laadpunt selecteren",
+        "description": "Kies het laadpunt om toe te voegen aan Home Assistant.",
+        "data": {
+          "device_id": "Laadpunt"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Teison opnieuw verifiëren",
+        "description": "Het wachtwoord voor {username} is niet meer geldig. Voer het opnieuw in.",
+        "data": {
+          "password": "Wachtwoord"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken met de Teison-cloud.",
+      "invalid_auth": "Ongeldige gebruikersnaam of wachtwoord.",
+      "no_devices": "Er zijn geen laadpunten gevonden voor dit account.",
+      "unknown": "Er is een onverwachte fout opgetreden."
+    },
+    "abort": {
+      "already_configured": "Dit laadpunt is al geconfigureerd.",
+      "reauth_successful": "Herverificatie is geslaagd."
+    }
+  },
+  "selector": {
+    "app": {
+      "options": {
+        "myteison": "My Teison (cloud.teison.com)",
+        "teisonme": "Teison Me (teison-m3.x-cheng.com)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status",
+        "state": {
+          "available": "Beschikbaar",
+          "preparing": "Voorbereiden",
+          "charging": "Opladen",
+          "suspended_evse": "Onderbroken (laadpunt)",
+          "suspended_ev": "Onderbroken (voertuig)",
+          "finished": "Voltooid",
+          "reserved": "Gereserveerd",
+          "unavailable": "Niet beschikbaar",
+          "faulted": "Fout"
+        }
+      },
+      "power": { "name": "Vermogen" },
+      "energy": { "name": "Sessie-energie" },
+      "total_energy": { "name": "Totale energie" },
+      "temperature": { "name": "Temperatuur" },
+      "duration": { "name": "Sessieduur" },
+      "voltage_l1": { "name": "Spanning L1" },
+      "voltage_l2": { "name": "Spanning L2" },
+      "voltage_l3": { "name": "Spanning L3" },
+      "current_l1": { "name": "Stroom L1" },
+      "current_l2": { "name": "Stroom L2" },
+      "current_l3": { "name": "Stroom L3" }
+    },
+    "number": {
+      "max_current": { "name": "Max. laadstroom" },
+      "household_current": { "name": "Limiet huishoudstroom" }
+    },
+    "switch": {
+      "charging": { "name": "Opladen" }
+    }
+  }
+}

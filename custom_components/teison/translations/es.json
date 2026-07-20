@@ -1,0 +1,83 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectar con Teison",
+        "description": "Inicia sesión con las credenciales de tu aplicación Teison.",
+        "data": {
+          "app": "Aplicación / nube de Teison",
+          "username": "Nombre de usuario",
+          "password": "Contraseña"
+        }
+      },
+      "device": {
+        "title": "Seleccionar cargador",
+        "description": "Elige el cargador que quieres añadir a Home Assistant.",
+        "data": {
+          "device_id": "Cargador"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Volver a autenticar Teison",
+        "description": "La contraseña de {username} ya no es válida. Introdúcela de nuevo.",
+        "data": {
+          "password": "Contraseña"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No se pudo conectar con la nube de Teison.",
+      "invalid_auth": "Nombre de usuario o contraseña no válidos.",
+      "no_devices": "No se encontraron cargadores en esta cuenta.",
+      "unknown": "Se produjo un error inesperado."
+    },
+    "abort": {
+      "already_configured": "Este cargador ya está configurado.",
+      "reauth_successful": "La reautenticación se realizó correctamente."
+    }
+  },
+  "selector": {
+    "app": {
+      "options": {
+        "myteison": "My Teison (cloud.teison.com)",
+        "teisonme": "Teison Me (teison-m3.x-cheng.com)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Estado",
+        "state": {
+          "available": "Disponible",
+          "preparing": "Preparando",
+          "charging": "Cargando",
+          "suspended_evse": "En pausa (cargador)",
+          "suspended_ev": "En pausa (vehículo)",
+          "finished": "Finalizado",
+          "reserved": "Reservado",
+          "unavailable": "No disponible",
+          "faulted": "Con fallo"
+        }
+      },
+      "power": { "name": "Potencia" },
+      "energy": { "name": "Energía de la sesión" },
+      "total_energy": { "name": "Energía total" },
+      "temperature": { "name": "Temperatura" },
+      "duration": { "name": "Duración de la sesión" },
+      "voltage_l1": { "name": "Tensión L1" },
+      "voltage_l2": { "name": "Tensión L2" },
+      "voltage_l3": { "name": "Tensión L3" },
+      "current_l1": { "name": "Corriente L1" },
+      "current_l2": { "name": "Corriente L2" },
+      "current_l3": { "name": "Corriente L3" }
+    },
+    "number": {
+      "max_current": { "name": "Corriente máxima de carga" },
+      "household_current": { "name": "Límite de corriente doméstica" }
+    },
+    "switch": {
+      "charging": { "name": "Carga" }
+    }
+  }
+}

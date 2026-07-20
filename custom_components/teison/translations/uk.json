@@ -1,0 +1,83 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Підключитися до Teison",
+        "description": "Увійдіть за допомогою даних із мобільного застосунку Teison.",
+        "data": {
+          "app": "Застосунок / хмара Teison",
+          "username": "Ім'я користувача",
+          "password": "Пароль"
+        }
+      },
+      "device": {
+        "title": "Виберіть зарядний пристрій",
+        "description": "Виберіть зарядний пристрій, щоб додати до Home Assistant.",
+        "data": {
+          "device_id": "Зарядний пристрій"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Повторна автентифікація Teison",
+        "description": "Пароль для {username} більше не дійсний. Введіть його ще раз.",
+        "data": {
+          "password": "Пароль"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Не вдалося підключитися до хмари Teison.",
+      "invalid_auth": "Неправильне ім'я користувача або пароль.",
+      "no_devices": "На цьому обліковому записі не знайдено зарядних пристроїв.",
+      "unknown": "Сталася неочікувана помилка."
+    },
+    "abort": {
+      "already_configured": "Цей зарядний пристрій уже налаштовано.",
+      "reauth_successful": "Повторна автентифікація пройшла успішно."
+    }
+  },
+  "selector": {
+    "app": {
+      "options": {
+        "myteison": "My Teison (cloud.teison.com)",
+        "teisonme": "Teison Me (teison-m3.x-cheng.com)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Стан",
+        "state": {
+          "available": "Доступний",
+          "preparing": "Підготовка",
+          "charging": "Заряджання",
+          "suspended_evse": "Призупинено (зарядний пристрій)",
+          "suspended_ev": "Призупинено (транспорт)",
+          "finished": "Завершено",
+          "reserved": "Зарезервовано",
+          "unavailable": "Недоступний",
+          "faulted": "Несправність"
+        }
+      },
+      "power": { "name": "Потужність" },
+      "energy": { "name": "Енергія сеансу" },
+      "total_energy": { "name": "Загальна енергія" },
+      "temperature": { "name": "Температура" },
+      "duration": { "name": "Тривалість сеансу" },
+      "voltage_l1": { "name": "Напруга L1" },
+      "voltage_l2": { "name": "Напруга L2" },
+      "voltage_l3": { "name": "Напруга L3" },
+      "current_l1": { "name": "Струм L1" },
+      "current_l2": { "name": "Струм L2" },
+      "current_l3": { "name": "Струм L3" }
+    },
+    "number": {
+      "max_current": { "name": "Макс. струм заряджання" },
+      "household_current": { "name": "Ліміт побутового струму" }
+    },
+    "switch": {
+      "charging": { "name": "Заряджання" }
+    }
+  }
+}

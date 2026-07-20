@@ -1,0 +1,83 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Poveži s Teisonom",
+        "description": "Prijavite se podacima iz Teison mobilne aplikacije.",
+        "data": {
+          "app": "Teison aplikacija / oblak",
+          "username": "Korisničko ime",
+          "password": "Lozinka"
+        }
+      },
+      "device": {
+        "title": "Odaberite punjač",
+        "description": "Odaberite punjač za dodavanje u Home Assistant.",
+        "data": {
+          "device_id": "Punjač"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Ponovna autentifikacija Teisona",
+        "description": "Lozinka za {username} više nije valjana. Unesite je ponovno.",
+        "data": {
+          "password": "Lozinka"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Povezivanje s Teison oblakom nije uspjelo.",
+      "invalid_auth": "Neispravno korisničko ime ili lozinka.",
+      "no_devices": "Na ovom računu nisu pronađeni punjači.",
+      "unknown": "Došlo je do neočekivane pogreške."
+    },
+    "abort": {
+      "already_configured": "Ovaj punjač je već konfiguriran.",
+      "reauth_successful": "Ponovna autentifikacija je uspjela."
+    }
+  },
+  "selector": {
+    "app": {
+      "options": {
+        "myteison": "My Teison (cloud.teison.com)",
+        "teisonme": "Teison Me (teison-m3.x-cheng.com)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status",
+        "state": {
+          "available": "Dostupno",
+          "preparing": "Priprema",
+          "charging": "Punjenje",
+          "suspended_evse": "Pauzirano (punjač)",
+          "suspended_ev": "Pauzirano (vozilo)",
+          "finished": "Završeno",
+          "reserved": "Rezervirano",
+          "unavailable": "Nedostupno",
+          "faulted": "Greška"
+        }
+      },
+      "power": { "name": "Snaga" },
+      "energy": { "name": "Energija sesije" },
+      "total_energy": { "name": "Ukupna energija" },
+      "temperature": { "name": "Temperatura" },
+      "duration": { "name": "Trajanje sesije" },
+      "voltage_l1": { "name": "Napon L1" },
+      "voltage_l2": { "name": "Napon L2" },
+      "voltage_l3": { "name": "Napon L3" },
+      "current_l1": { "name": "Struja L1" },
+      "current_l2": { "name": "Struja L2" },
+      "current_l3": { "name": "Struja L3" }
+    },
+    "number": {
+      "max_current": { "name": "Maks. struja punjenja" },
+      "household_current": { "name": "Ograničenje kućne struje" }
+    },
+    "switch": {
+      "charging": { "name": "Punjenje" }
+    }
+  }
+}
