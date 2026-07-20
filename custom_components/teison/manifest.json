@@ -1,12 +1,12 @@
 {
   "domain": "teison",
   "name": "Teison EV Charger",
-  "codeowners": ["@YOUR_GH_USER"],
+  "codeowners": ["@gmaslowski"],
   "config_flow": true,
-  "documentation": "https://github.com/YOUR_GH_USER/teison",
+  "documentation": "https://github.com/gmaslowski/teison-ha",
   "integration_type": "device",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/YOUR_GH_USER/teison/issues",
+  "issue_tracker": "https://github.com/gmaslowski/teison-ha/issues",
   "requirements": [],
   "version": "0.1.0"
 }

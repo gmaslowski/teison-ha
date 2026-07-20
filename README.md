@@ -33,7 +33,7 @@ multi-charger accounts, and **diagnostics** download.
 ### HACS (recommended)
 
 1. In HACS → **Integrations**, open the ⋮ menu → **Custom repositories**.
-2. Add `https://github.com/YOUR_GH_USER/teison` with category **Integration**.
+2. Add `https://github.com/gmaslowski/teison-ha` with category **Integration**.
 3. Install **Teison EV Charger** and restart Home Assistant.
 4. Go to **Settings → Devices & Services → Add Integration** and search for
    *Teison EV Charger*.
@@ -88,5 +88,5 @@ custom integration.
 
 [hacs]: https://github.com/hacs/integration
 [hacs-badge]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
-[validate-badge]: https://github.com/YOUR_GH_USER/teison/actions/workflows/validate.yml/badge.svg
-[validate-workflow]: https://github.com/YOUR_GH_USER/teison/actions/workflows/validate.yml
+[validate-badge]: https://github.com/gmaslowski/teison-ha/actions/workflows/validate.yml/badge.svg
+[validate-workflow]: https://github.com/gmaslowski/teison-ha/actions/workflows/validate.yml
