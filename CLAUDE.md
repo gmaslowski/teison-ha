@@ -22,7 +22,7 @@ ruff format --check .   # format check (drop --check to apply)
 pre-commit run -a       # ruff + json/yaml/whitespace hooks
 ```
 
-`requirements_test.txt` pins `homeassistant`, the test harness, and `ruff` **against a specific HA release line**. When you bump it, bump `hacs.json`'s `homeassistant` floor and `ruff` in `.pre-commit-config.yaml` to match — CI installs `ruff==0.7.4` explicitly.
+`requirements_test.txt` pins `homeassistant`, the test harness, and `ruff` **against a specific HA release line**. When you bump it, bump `hacs.json`'s `homeassistant` floor to match. The `ruff` pin is duplicated in **three** places that must move together — `requirements_test.txt`, `.pre-commit-config.yaml`, and `.github/workflows/test.yml` (an explicit `pip install ruff==…`). Because the lint job installs that pinned ruff explicitly, bumping `requirements_test.txt` alone is **not** exercised by CI, so keep all three in lockstep.
 
 ## Architecture
 
