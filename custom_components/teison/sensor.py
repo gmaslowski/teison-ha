@@ -74,9 +74,12 @@ SENSORS: tuple[TeisonSensorDescription, ...] = (
         translation_key="energy",
         device_class=SensorDeviceClass.ENERGY,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
-        # Energy delivered in the current session; resets to 0 each session,
-        # which TOTAL_INCREASING handles (MEASUREMENT is invalid for energy).
-        state_class=SensorStateClass.TOTAL_INCREASING,
+        # Energy delivered in the *current* session; it resets to 0 each
+        # session, so it must stay out of the Energy dashboard's long-term
+        # totals. Leaving ``state_class`` unset does exactly that: the value is
+        # still shown in kWh but no long-term statistics are generated. (The
+        # ENERGY device class only permits TOTAL/TOTAL_INCREASING state classes
+        # -- MEASUREMENT would log an "impossible state class" warning.)
         value_fn=lambda d: d.detail.get("energy"),
     ),
     TeisonSensorDescription(
