@@ -1,0 +1,38 @@
+name: Bug report
+description: Report a problem with the Teison EV Charger integration
+labels: [bug]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear description of what went wrong.
+    validations:
+      required: true
+  - type: input
+    id: ha_version
+    attributes:
+      label: Home Assistant version
+    validations:
+      required: true
+  - type: input
+    id: integration_version
+    attributes:
+      label: Integration version
+    validations:
+      required: true
+  - type: dropdown
+    id: app
+    attributes:
+      label: Which cloud?
+      options:
+        - My Teison (cloud.teison.com)
+        - Teison Me (teison-m3.x-cheng.com)
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Enable debug logging for `custom_components.teison` and paste output.
+      render: text

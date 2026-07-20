@@ -1,0 +1,83 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Teison",
+        "description": "Sign in with the credentials from your Teison mobile app.",
+        "data": {
+          "app": "Teison app / cloud",
+          "username": "Username",
+          "password": "Password"
+        }
+      },
+      "device": {
+        "title": "Select charger",
+        "description": "Choose the charger to add to Home Assistant.",
+        "data": {
+          "device_id": "Charger"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate Teison",
+        "description": "The password for {username} is no longer valid. Enter it again.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the Teison cloud.",
+      "invalid_auth": "Invalid username or password.",
+      "no_devices": "No chargers were found on this account.",
+      "unknown": "An unexpected error occurred."
+    },
+    "abort": {
+      "already_configured": "This charger is already configured.",
+      "reauth_successful": "Re-authentication was successful."
+    }
+  },
+  "selector": {
+    "app": {
+      "options": {
+        "myteison": "My Teison (cloud.teison.com)",
+        "teisonme": "Teison Me (teison-m3.x-cheng.com)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status",
+        "state": {
+          "available": "Available",
+          "preparing": "Preparing",
+          "charging": "Charging",
+          "suspended_evse": "Suspended (charger)",
+          "suspended_ev": "Suspended (vehicle)",
+          "finished": "Finished",
+          "reserved": "Reserved",
+          "unavailable": "Unavailable",
+          "faulted": "Faulted"
+        }
+      },
+      "power": { "name": "Power" },
+      "energy": { "name": "Session energy" },
+      "total_energy": { "name": "Total energy" },
+      "temperature": { "name": "Temperature" },
+      "duration": { "name": "Session duration" },
+      "voltage_l1": { "name": "Voltage L1" },
+      "voltage_l2": { "name": "Voltage L2" },
+      "voltage_l3": { "name": "Voltage L3" },
+      "current_l1": { "name": "Current L1" },
+      "current_l2": { "name": "Current L2" },
+      "current_l3": { "name": "Current L3" }
+    },
+    "number": {
+      "max_current": { "name": "Max charging current" },
+      "household_current": { "name": "Household current limit" }
+    },
+    "switch": {
+      "charging": { "name": "Charging" }
+    }
+  }
+}
