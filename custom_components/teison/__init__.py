@@ -10,7 +10,12 @@ from .api import TeisonApiClient
 from .const import CONF_APP, CONF_DEVICE_ID
 from .coordinator import TeisonConfigEntry, TeisonCoordinator
 
-PLATFORMS: list[Platform] = [Platform.NUMBER, Platform.SENSOR, Platform.SWITCH]
+PLATFORMS: list[Platform] = [
+    Platform.BINARY_SENSOR,
+    Platform.NUMBER,
+    Platform.SENSOR,
+    Platform.SWITCH,
+]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: TeisonConfigEntry) -> bool:
