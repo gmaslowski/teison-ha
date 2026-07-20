@@ -31,6 +31,10 @@ DEFAULT_SCAN_INTERVAL: Final = timedelta(seconds=DEFAULT_SCAN_INTERVAL_SECONDS)
 MIN_SCAN_INTERVAL: Final = 10
 MAX_SCAN_INTERVAL: Final = 600
 
+# ``getCpConfig`` changes rarely, so it is polled far less often than the live
+# telemetry -- at most once per this interval, plus right after a config write.
+CONFIG_POLL_INTERVAL: Final = timedelta(minutes=10)
+
 # --- Charge point status -------------------------------------------------
 # ``connStatus`` from the cloud, mapped onto the OCPP-style status vocabulary
 # used by the official app. Value 88 is a vendor-specific fault code.

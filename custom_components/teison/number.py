@@ -94,4 +94,5 @@ class TeisonNumber(TeisonEntity, NumberEntity):
             self.entity_description.config_key,
             int(value),
         )
-        await self.coordinator.async_request_refresh()
+        # Force a config re-fetch so the new value is reflected immediately.
+        await self.coordinator.async_request_config_refresh()
