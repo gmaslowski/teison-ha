@@ -45,6 +45,11 @@
     }
   },
   "entity": {
+    "binary_sensor": {
+      "plugged_in": { "name": "Cable connected" },
+      "charging": { "name": "Charging" },
+      "problem": { "name": "Problem" }
+    },
     "sensor": {
       "status": {
         "name": "Status",
