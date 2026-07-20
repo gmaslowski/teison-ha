@@ -1,6 +1,6 @@
 # Teison EV Charger — Home Assistant integration
 
-[![hacs][hacs-badge]][hacs] [![Validate][validate-badge]][validate-workflow]
+[![hacs][hacs-badge]][hacs] [![Validate][validate-badge]][validate-workflow] [![Buy Me A Coffee][bmc-badge]][bmc]
 
 A Home Assistant **custom integration** for [Teison](https://www.teison.com/) Mini
 EV chargers (the WiFi "smart" wallboxes controlled through the *My Teison* /
@@ -82,6 +82,12 @@ Protocol groundwork based on the community reverse-engineering effort behind the
 Home Assistant add-on. This project reimplements it as a native, HACS-installable
 custom integration.
 
+## Support
+
+If this integration is useful to you, you can support its development:
+
+<a href="https://www.buymeacoffee.com/gmaslowski"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="48"></a>
+
 ## License
 
 [MIT](LICENSE)
@@ -90,3 +96,5 @@ custom integration.
 [hacs-badge]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
 [validate-badge]: https://github.com/gmaslowski/teison-ha/actions/workflows/validate.yml/badge.svg
 [validate-workflow]: https://github.com/gmaslowski/teison-ha/actions/workflows/validate.yml
+[bmc]: https://www.buymeacoffee.com/gmaslowski
+[bmc-badge]: https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-FFDD00.svg?logo=buymeacoffee&logoColor=black
