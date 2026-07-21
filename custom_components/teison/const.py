@@ -57,6 +57,9 @@ STATUS_OPTIONS: Final[list[str]] = sorted(set(CHARGE_POINT_STATUS.values()))
 # ``connStatus`` value that means an active charging session.
 STATUS_CHARGING: Final = 2
 
+# Mapped ``CHARGE_POINT_STATUS`` value that indicates a fault (connStatus 8/88).
+STATUS_FAULTED: Final = "faulted"
+
 # --- changeCpConfig keys -------------------------------------------------
 CONFIG_KEY_MAX_CURRENT: Final = "VendorMaxWorkCurrent"
 CONFIG_KEY_HOUSEHOLD_CURRENT: Final = "DirectlyScheduleConstraintInfo"
