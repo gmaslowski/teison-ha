@@ -36,6 +36,12 @@
       "reauth_successful": "Re-authentication was successful."
     }
   },
+  "issues": {
+    "charger_faulted": {
+      "title": "{name} reported a fault",
+      "description": "The Teison charger \"{name}\" is reporting a fault (status Faulted). Check the charger and the connected vehicle. This issue clears automatically once the charger returns to a normal status."
+    }
+  },
   "options": {
     "step": {
       "init": {

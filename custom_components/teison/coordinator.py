@@ -10,6 +10,7 @@ from typing import Any
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed
+from homeassistant.helpers import issue_registry as ir
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.util import dt as dt_util
 
@@ -20,10 +21,12 @@ from .api import (
     TeisonError,
 )
 from .const import (
+    CHARGE_POINT_STATUS,
     CONF_SCAN_INTERVAL,
     CONFIG_POLL_INTERVAL,
     DEFAULT_SCAN_INTERVAL_SECONDS,
     DOMAIN,
+    STATUS_FAULTED,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -86,6 +89,27 @@ class TeisonCoordinator(DataUpdateCoordinator[TeisonData]):
             or now - self._config_fetched_at >= CONFIG_POLL_INTERVAL
         )
 
+    @property
+    def _fault_issue_id(self) -> str:
+        """Stable repair-issue id for this charger."""
+        return f"charger_faulted_{self.device_id}"
+
+    def _async_update_fault_issue(self, detail: dict[str, Any]) -> None:
+        """Raise or clear a repair issue based on the reported status."""
+        faulted = CHARGE_POINT_STATUS.get(detail.get("connStatus")) == STATUS_FAULTED
+        if faulted:
+            ir.async_create_issue(
+                self.hass,
+                DOMAIN,
+                self._fault_issue_id,
+                is_fixable=False,
+                severity=ir.IssueSeverity.ERROR,
+                translation_key="charger_faulted",
+                translation_placeholders={"name": self.config_entry.title},
+            )
+        else:
+            ir.async_delete_issue(self.hass, DOMAIN, self._fault_issue_id)
+
     async def _async_update_data(self) -> TeisonData:
         """Fetch telemetry every cycle; refresh config only occasionally."""
         try:
@@ -100,4 +124,5 @@ class TeisonCoordinator(DataUpdateCoordinator[TeisonData]):
             raise ConfigEntryAuthFailed(str(err)) from err
         except (TeisonConnectionError, TeisonError) as err:
             raise UpdateFailed(str(err)) from err
+        self._async_update_fault_issue(detail)
         return TeisonData(detail=detail, config=self._config)
